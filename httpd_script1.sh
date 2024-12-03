@@ -15,13 +15,13 @@ sudo dnf update
 sudo dnf install httpd wget unzip git -y
 
 ## create a directory and download or clone the project
-sudo mkdir /tmp/webfile
+sudo mkdir -p /tmp/webfile
 git clone <URL> /tmp/webfile
-unzip /tmp/webfile/clonefile.zip
+unzip /tmp/webfile/clonefile.zip -d /tmp/webfile
 
 ## you can also use wget
-wget <URL> /tmp/webfile
-unzip /tmp/webfile/downloadfile.zip
+wget <URL> -O /tmp/webfile
+unzip /tmp/webfile/downloadfile.zip -d /tmp/webfile
 
 
 ## start the httpd service
@@ -32,6 +32,7 @@ sudo systemctl enable httpd
 ## copy files to html directory
 cp -r /tmp/webfile/unzipped_file/* /var/www/html
 
-sudo syatemctl restart httpd
+sudo systemctl restart httpd
 
 ### then use your ip address in browser url have fun.
+echo "User your ip address to run the web site"
